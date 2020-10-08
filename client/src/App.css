@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  color: #008080;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+a {
+  text-decoration: none;
+  color: #008080;
+}
+
+button {
+  color: #008080;
+  margin: 5px;
+}
+
+/* Home page */
+.home {
+  min-width: 100px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.home div {
+  padding: 10px 0;
+  font-size: 20px;
+}
+.line {
+  border-bottom: 2px solid #d2c9bb;
+}
+
+/* Book page */
+.book {
+  min-width: 250px;
+  padding-left: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.book div {
+  margin: 5px 0;
+}
+
+.book input {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 0.5px solid #8e8e8e;
+}
+
+/* Confirm page */
+.confirm {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.confirm button {
+  margin: 13px 0;
+}
+
+/* Cancel page */
+.cancel {
+  min-width: 250px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cancel input {
+  margin: 5px;
+  padding: 5px;
+    border: 0.5px solid #8e8e8e;
+}
+
+.cancel-input-btn {
+  margin: 15px 0;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.list {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+
