@@ -19,14 +19,12 @@
 5. Add `"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"` in package.json file of server.
 6. Add following code in `server.js`. Important to place the code script after all app.get() connected to server-side. 
 
-if (process.env.NODE_ENV === 'production') {<br/>
-    // Serve any static files
-    app.use(express.static(path.join(__dirname, 'client/build')));
-  // Handle React routing, return all requests to React app
-    app.get('*', function(req, res) {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-  }
+`if (process.env.NODE_ENV === 'production')` {<br/>
+    `app.use(express.static(path.join(__dirname, 'client/build')));` <br/>
+    `app.get('*', function(req, res) {` <br/>
+      `res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));` <br/>
+    `});` <br/>
+  `}`
 
 ### SQL database
 1. Set up ClearDB on Add-ons: `heroku addons:create cleardb:ignite`. (Add your credit card info in your account to use this add-ons for free.)
