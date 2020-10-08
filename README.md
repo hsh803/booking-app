@@ -17,15 +17,16 @@
 3. Install cors by using following command in terminal to action to server policy (to get data from other servers.): `npm install cors`.
 4. Create `.gitignore` file in root directory where server.js file exists and add node_modules in the file.
 5. Add `"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"` in package.json file of server.
-6. Add following code in `server.js`. Important to have the code script after all app.get(). 
-`if (process.env.NODE_ENV === 'production') {<br/>
+6. Add following code in `server.js`. Important to place the code script after all app.get() connected to server-side. 
+
+if (process.env.NODE_ENV === 'production') {<br/>
     // Serve any static files
     app.use(express.static(path.join(__dirname, 'client/build')));
   // Handle React routing, return all requests to React app
     app.get('*', function(req, res) {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
-  }`
+  }
 
 ### SQL database
 1. Set up ClearDB on Add-ons: `heroku addons:create cleardb:ignite`. (Add your credit card info in your account to use this add-ons for free.)
