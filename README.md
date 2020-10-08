@@ -18,7 +18,7 @@
 4. Create `.gitignore` file in root directory where server.js file exists and add node_modules in the file.
 5. Add `"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"` in package.json file of server.
 6. Add following code in `server.js`. Important to have the code script after all app.get(). 
-`if (process.env.NODE_ENV === 'production') {
+`if (process.env.NODE_ENV === 'production') {<br/>
     // Serve any static files
     app.use(express.static(path.join(__dirname, 'client/build')));
   // Handle React routing, return all requests to React app
@@ -28,7 +28,21 @@
   }`
 
 ### SQL database
-1. Create data in the MySQL database to connect to back-end server.
+1. Set up ClearDB on Add-ons: `heroku addons:create cleardb:ignite`. (Add your credit card info in your account to use this add-ons for free.)
+2. Run following command line to get your database URL: `heroku config | grep CLEARDB_DATABASE_URL`.
+3. You get the database URL (ex. mysql://c7846000000000:2cxxxxxx@us-cdbr-eaxx-0x.cleardb.com/heroku_95eXxxxb0000ec?reconnect=true)
+4. Create your config.json file for connecting to the database using the database URL. (config/voca.json)
+
+ - username: c7846000000000
+ - password: 2cxxxxxx
+ - host: us-cdbr-eaxx-0x.cleardb.com
+ - database: heroku_95eXxxxb0000ec
+
+5. Add `"start": "node index.js"` (index.js file is the one server runs in.) under "scripts" in package.json. (package.json)
+6. Server port should be `process.env.PORT` for Heroku to connect to random server in browser. (index.js)
+7. Use `createPool` for conncecting database to MySQL (createConnection cause the connection error, like H10. (index.js)
+
+`var db = mysql.createPool(config);`
 
 ### Initiate git repository
 1. Initiate Git repository in your root directory by using following command line: `git init`.
