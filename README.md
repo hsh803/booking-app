@@ -19,7 +19,7 @@
 5. Add `"heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"` in package.json file of server.
 6. Add following code in `server.js`. Important to place the code script after all app.get() connected to server-side. 
 
-`if (process.env.NODE_ENV === 'production')` {<br/>
+`if (process.env.NODE_ENV === 'production'){` <br/>
     `app.use(express.static(path.join(__dirname, 'client/build')));` <br/>
     `app.get('*', function(req, res) {` <br/>
       `res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));` <br/>
