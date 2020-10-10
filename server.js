@@ -25,8 +25,7 @@ app.use(express.json());
 const nodemailer = require("nodemailer");
 const email = require('./config/email.json');
 const transporter = nodemailer.createTransport({
-    host: 'smtp-mail.outlook.com',
-    port: 587,
+    service: "hotmail",
     auth: {
         user: email.sender,
         pass: email.pass
