@@ -53,3 +53,5 @@
 2. Create a new heroku app repository: `heroku create <your app name>`
 3. Deploy git local repository to Heroku app repository: `git push heorku master`.
 
+References: 
+https://github.com/nodemailer/nodemailer/issues/165
