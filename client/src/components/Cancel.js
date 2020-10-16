@@ -25,22 +25,31 @@ useEffect(() => {
         ))
         )
         console.log(email)
+        console.log(mybooking)
+        console.log(mybooking.length)
 })
+
+useEffect(() => {
+    if (email === "") {
+        setDisplay({display: "none"})
+    }
+}, [email]
+)
 
 // Display booking data in front-end (react)
 const displayHandle = () => {
     if(mybooking !== null) {
         setDisplay({display: "block"});
-        console.log(display.display)
      }
     
-    if(mybooking[0] === null || mybooking === ""){
+    if(mybooking === "" || email === ""){
         setDisplay({display: "none"});
         alert("There is no booking.");
         setEmail("");
-        console.log(display.display)    
-    }    
+    }
 }
+console.log(display.display)
+
 
 // Delete booking from MySQL database (server)
 const deleteHandle = (email, date) => {
