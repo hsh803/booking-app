@@ -5,30 +5,22 @@ import {Link} from 'react-router-dom';
 export const Cancel = () => {
 
 const [email, setEmail] = useState("");
-const [mybooking, setMybooking] = useState([]);
+const [mybooking, setMybooking] = useState("");
 const [display, setDisplay] = useState({display: "none"});
 
 // Fetch booking database from MySQL (server)
 useEffect(() => {
     Axios.get("/book/show")
-    .then(res => 
-        setMybooking(res.data.map(element => 
-            (element.email === email) ? 
-            (
-            <div key={element.id}>
-                <p>- Name: {element.name}</p>
-                <p>- Email: {element.email}</p>
-                <p>- Date: {element.datetime}</p>
-            <button onClick={() => deleteHandle(element.email, element.datetime)}>Delete</button>
-            </div>
-            ) : null
-        ))
+    .then(res => res.data.map(element =>
+        (element.email === email) ?
+        setMybooking(element) : ""
+        )
         )
         console.log(email)
         console.log(mybooking)
-        console.log(mybooking.length)
 })
 
+// Control displaying booking list depending on email input value
 useEffect(() => {
     if (email === "") {
         setDisplay({display: "none"})
@@ -38,19 +30,28 @@ useEffect(() => {
 
 // Display booking data in front-end (react)
 const displayHandle = () => {
-    if(mybooking !== null) {
+    if(mybooking.email === email) {
         setDisplay({display: "block"});
      }
     
-    if(mybooking === "" || email === ""){
+    if(mybooking.email !== email){
         setDisplay({display: "none"});
         alert("There is no booking.");
+        setMybooking("")
         setEmail("");
     }
 }
 console.log(display.display)
 
-
+// Setting booking list to variable
+const booking = 
+    <div key={mybooking.id}>
+        <p>- Name: {mybooking.name}</p>
+        <p>- Email: {mybooking.email}</p>
+        <p>- Date: {mybooking.datetime}</p>
+        <button onClick={() => deleteHandle(mybooking.email, mybooking.datetime)}>Delete</button>
+    </div>
+    
 // Delete booking from MySQL database (server)
 const deleteHandle = (email, date) => {
     console.log(email + date);
@@ -72,7 +73,7 @@ return(
             <button type="button" onClick={() => displayHandle()}>OK</button>
             <button type="buttom"><Link to="/">Go to Home</Link></button>
             </div>
-        <div className="list" style={display}>{mybooking}</div>
+        <div className="list" style={display}>{booking}</div>
     </div>
 )
 }
