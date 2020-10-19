@@ -69,9 +69,11 @@ return(
     <div className="cancel">
         <div>Type in the email adress you gave by your booking.</div>
             <div className="cancel-input-btn">
-            <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
-            <button type="button" onClick={() => displayHandle()}>OK</button>
-            <button type="buttom"><Link to="/">Go to Home</Link></button>
+                <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
+                <div>
+                    <button type="button" onClick={() => displayHandle()}>OK</button>
+                    <button type="buttom"><Link to="/">Go to Home</Link></button>
+                </div>
             </div>
         <div className="list" style={display}>{booking}</div>
     </div>
